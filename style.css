@@ -24,10 +24,25 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
 
 /* POS layout */
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
 .product-btn{display:flex;flex-direction:column;justify-content:space-between;padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff0 20%, rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03);cursor:pointer;min-height:92px}
+.product-btn {
+  color: white;
+  /* altri stili esistenti */
+}
 .product-btn .title{font-weight:700}
 .price{font-weight:700;margin-top:6px}
 .stock{font-size:12px;color:var(--muted)}
+.product-btn .title,
+.product-btn .price,
+.product-btn .stock {
+  color: white;
+}
 
 /* Receipt */
 .receipt{display:flex;flex-direction:column;gap:12px}
