@@ -228,3 +228,95 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
   color: #ffeb3b; /* evidenzia al passaggio del mouse */
   transform: scale(1.05);
 }
+
+.clickable-title {
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.clickable-title:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Pulsanti generali */
+.menu-btn, .btn-primary, .btn-outline, .btn-ghost {
+  color: #fff; /* testo bianco */
+  background-color: #0077cc; /* blu acceso ma elegante */
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-btn:hover, .btn-primary:hover, .btn-outline:hover, .btn-ghost:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+
+/* Pulsanti della sezione prodotti */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background: linear-gradient(135deg, #2a2a2a, #3d3d3d);
+  color: white;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #333, #4a4a4a);
+}
+
+/* Titolo cliccabile */
+.clickable-title {
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.clickable-title:hover {
+  color: #00bfff;
+  transform: scale(1.05);
+}
+
+/* Top menu layout */
+.top-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e1e;
+  color: white;
+  padding: 15px 25px;
+  border-bottom: 2px solid #0077cc;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #1a1a1a;
+  color: #aaa;
+}
