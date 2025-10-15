@@ -52,3 +52,43 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
 /* Responsive */
 @media (min-width:900px){ .grid-3{grid-template-columns:2fr 380px} }
 .small{font-size:12px;color:var(--muted)}
+
+/* Sfondo modale (scurisce lo sfondo) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* sfondo scuro semitrasparente dietro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Scheda della modale — ora completamente opaca */
+.modal-card {
+  background: #1e1e1e; /* colore solido, non trasparente */
+  color: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  opacity: 1; /* assicurati che non sia trasparente */
+  transform: scale(1);
+  transition: transform 0.2s ease;
+}
+
+.modal-card h3 {
+  margin-top: 0;
+  color: #00bfff;
+  font-weight: 700;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
