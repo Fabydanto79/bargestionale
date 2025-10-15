@@ -123,3 +123,60 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
 .btn-pos:hover {
   background: #555;
 }
+
+/* --- SEZIONE GESTIONE PRODOTTI --- */
+.manage-products {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Contenitore pulsanti */
+.manage-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Stile pulsanti gestione */
+.manage-btn {
+  background: linear-gradient(145deg, #4facfe, #00f2fe); /* sfumatura blu brillante */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.manage-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Pulsanti di azione “critici” (es. elimina) */
+.manage-btn.danger {
+  background: linear-gradient(145deg, #ff4e50, #f9d423);
+}
+
+/* Campi input e label */
+.manage-products input,
+.manage-products select {
+  width: 100%;
+  max-width: 320px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.manage-products label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
