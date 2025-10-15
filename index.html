@@ -13,22 +13,18 @@
   <div class="app">
     <header class="topbar">
       <div class="brand">
-        <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M3 12h18M12 3v18"/>
-        </svg>
-
+        <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12h18M12 3v18"/></svg>
         <div>
-          <h1 class="clickable-title" onclick="showSection('POS')">Gestionale Bar</h1>
+          <h1>Gestionale Bar</h1>
           <small>Vendita al banco · Scorte · Scadenze</small>
         </div>
       </div>
-
-      <nav class="top-menu">
-        <div class="menu-buttons">
-          <button class="menu-btn" onclick="showSection('Prodotti')">Prodotti</button>
-          <button class="menu-btn" onclick="showSection('POS')">POS</button>
-        </div>
-      </nav>
+      <div class="actions">
+        <button id="btn-products" class="btn-ghost">Prodotti</button>
+        <button id="btn-stock" class="btn-ghost">Scorte</button>
+        <button id="btn-exp" class="btn-ghost">Scadenze</button>
+        <button id="btn-reports" class="btn-ghost">Report</button>
+      </div>
     </header>
 
     <main id="main" class="container">
