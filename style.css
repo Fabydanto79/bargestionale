@@ -41,7 +41,7 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
 .footer{padding:12px 20px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,0.02)}
 
 /* Modal */
-.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.6));padding:20px}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(2,6,23,0.6));padding:20px}
 .modal.hidden{display:none}
 .modal-card{width:100%;max-width:520px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
 .modal-card h3{margin:0 0 8px;font-size:18px}
