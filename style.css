@@ -180,3 +180,41 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
   margin-bottom: 6px;
   display: block;
 }
+
+/* --- NAVBAR / MENU SUPERIORE --- */
+.top-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #1f1c2c, #928dab);
+  padding: 10px 20px;
+  color: white;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.top-menu h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.menu-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.menu-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.menu-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
