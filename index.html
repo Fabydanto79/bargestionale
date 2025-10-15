@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gestionale Bar — Static</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12h18M12 3v18"/></svg>
+        <div>
+          <h1>Gestionale Bar</h1>
+          <small>Vendita al banco · Scorte · Scadenze</small>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="btn-products" class="btn-ghost">Prodotti</button>
+        <button id="btn-stock" class="btn-ghost">Scorte</button>
+        <button id="btn-exp" class="btn-ghost">Scadenze</button>
+        <button id="btn-reports" class="btn-ghost">Report</button>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <!-- Views rendered by script.js -->
+    </main>
+
+    <footer class="footer">
+      <div>Bozza moderna · Dati salvati nel browser</div>
+      <div class="small">Aggiungi a Home per usare come app</div>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <h3 id="modal-title">Nuovo prodotto</h3>
+      <div class="form-row"><label>Nome</label><input id="p-name" /></div>
+      <div class="form-row"><label>Prezzo (€)</label><input id="p-price" type="number" step="0.01" /></div>
+      <div class="form-row"><label>Categoria</label><input id="p-cat" /></div>
+      <div class="form-row"><label>Scorte</label><input id="p-stock" type="number" /></div>
+      <div class="form-row"><label>Soglia avviso</label><input id="p-th" type="number" /></div>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn-outline">Annulla</button>
+        <button id="modal-save" class="btn-primary">Salva</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
