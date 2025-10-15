@@ -320,3 +320,20 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
   background: #1a1a1a;
   color: #aaa;
 }
+
+button {
+  display: inline-block;
+  color: #fff;
+  background-color: #0077cc;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
