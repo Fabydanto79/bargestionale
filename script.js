@@ -23,11 +23,11 @@
 // Salva anche nel database Firestore
 if (typeof db !== "undefined") {
   db.collection("prodotti").add({
-    nome: defaultProducts.nome,
-    prezzo: defaultProducts.prezzo,
-    categoria: defaultProducts.categoria,
-    scorte: defaultProducts.scorte,
-    soglia: defaultProducts.soglia,
+    nome: defaultProducts.name,
+    prezzo: defaultProducts.price,
+    categoria: defaultProducts.category,
+    scorte: defaultProducts.stock,
+    soglia: defaultProducts.threshold,
     timestamp: new Date()
   })
   .then((docRef) => {
