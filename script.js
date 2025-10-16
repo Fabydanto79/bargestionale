@@ -1,26 +1,24 @@
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBGPcIf_PsIwoUSwgD7-AOjl0Y-N83b8YE",
-    authDomain: "gestionalebar.firebaseapp.com",
-    projectId: "gestionalebar",
-    storageBucket: "gestionalebar.firebasestorage.app",
-    messagingSenderId: "189700423445",
-    appId: "1:189700423445:web:3d850fe9ac50ae1a8c331c",
-    measurementId: "G-VSZB6RZGYE"
-  };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBGPcIf_PsIwoUSwgD7-AOjl0Y-N83b8YE",
+  authDomain: "gestionalebar.firebaseapp.com",
+  projectId: "gestionalebar",
+  storageBucket: "gestionalebar.firebasestorage.app",
+  messagingSenderId: "189700423445",
+  appId: "1:189700423445:web:3d850fe9ac50ae1a8c331c",
+  measurementId: "G-VSZB6RZGYE"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 // Simple static gestionale bar script
 (() => {
