@@ -100,3 +100,14 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
 .product-btn .stock {
   color: white !important;
 }
+
+/* Pulsanti nella sezione Vendita al banco */
+.product-btn {
+  background: rgba(255, 255, 255, 0.15) !important; /* meno trasparente: 0.15 → più visibile */
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white !important;
+}
+
+.product-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important; /* al passaggio migliora visibilità */
+}
