@@ -1,4 +1,3 @@
-db.collection("prodotti").add({...})
 
 // Simple static gestionale bar script
 (() => {
@@ -215,3 +214,4 @@ db.collection("prodotti").add({...})
   window._gb = { products, expirations, sales };
 
 })();
+db.collection("prodotti").add({...})
