@@ -214,4 +214,3 @@
   window._gb = { products, expirations, sales };
 
 })();
-db.collection("prodotti").add({...})
