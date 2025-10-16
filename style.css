@@ -92,3 +92,11 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
   justify-content: space-between;
   margin-top: 15px;
 }
+
+/* Rendi il testo dei pulsanti POS bianco */
+.product-btn,
+.product-btn .title,
+.product-btn .price,
+.product-btn .stock {
+  color: white !important;
+}
