@@ -1,56 +1,54 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#ff7a59;
+  --accent-2:#7c5cff;
+  --muted:#94a3b8;
+  --glass: rgba(255,255,255,0.04);
+  --success:#10b981;
+}
+*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #020617;color:#e6eef8;min-height:100vh;display:flex;align-items:stretch;flex-direction:column}
+.app{display:flex;flex-direction:column;min-height:100vh}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent-2));padding:8px;border-radius:10px;color:white;stroke:white}
+.brand h1{margin:0;font-size:18px;letter-spacing:0.2px}
+.brand small{display:block;color:var(--muted);font-size:12px}
+.actions{display:flex;gap:8px;align-items:center}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
+.container{padding:20px;flex:1;max-width:1100px;margin:18px auto;width:100%}
+.grid{display:grid;gap:16px}
+.grid-3{grid-template-columns:2fr 1fr;align-items:start}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
 
 /* POS layout */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.product-btn{display:flex;flex-direction:column;justify-content:space-between;padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff0 20%, rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03);cursor:pointer;min-height:92px}
+.product-btn .title{font-weight:700}
+.price{font-weight:700;margin-top:6px}
+.stock{font-size:12px;color:var(--muted)}
 
-.product-btn {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 14px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.1)); /* più opaco */
-  border: 1px solid rgba(255,255,255,0.1);
-  cursor: pointer;
-  min-height: 92px;
-  color: #ffffff; /* testo bianco */
-  font-weight: 600;
-  text-align: center;
-  transition: transform 0.2s ease, background 0.3s ease;
-}
+/* Receipt */
+.receipt{display:flex;flex-direction:column;gap:12px}
+.item-row{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;background:rgba(255,255,255,0.01)}
 
-.product-btn:hover {
-  background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
-  transform: scale(1.03);
-}
+/* Buttons */
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:white;padding:10px 12px;border-radius:10px;cursor:pointer}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
 
-.product-btn .title {
-  font-weight: 700;
-  color: #ffffff;
-}
+/* Footer */
+.footer{padding:12px 20px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,0.02)}
 
-.price {
-  font-weight: 700;
-  margin-top: 6px;
-  color: #ffffff;
-}
+/* Modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.6));padding:20px}
+.modal.hidden{display:none}
+.modal-card{width:100%;max-width:520px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+.modal-card h3{margin:0 0 8px;font-size:18px}
+.form-row{display:flex;flex-direction:column;margin-bottom:8px}
+.form-row label{font-size:13px;color:var(--muted);margin-bottom:6px}
+.form-row input{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
 
-.stock {
-  font-size: 12px;
-  color: #d0d7e0;
-}
-
-/* Modale completamente opaca */
-.modal-card {
-  width: 100%;
-  max-width: 520px;
-  background: #1b1f2b; /* solido */
-  color: white;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
+/* Responsive */
+@media (min-width:900px){ .grid-3{grid-template-columns:2fr 380px} }
+.small{font-size:12px;color:var(--muted)}
