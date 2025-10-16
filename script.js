@@ -1,3 +1,4 @@
+
 // Simple static gestionale bar script
 (() => {
   const LS_PRODUCTS = 'bar_products_v2';
