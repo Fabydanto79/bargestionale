@@ -1,3 +1,4 @@
+db.collection("prodotti").add({...})
 
 // Simple static gestionale bar script
 (() => {
