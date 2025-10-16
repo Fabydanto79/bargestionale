@@ -20,6 +20,25 @@
   let sales = JSON.parse(localStorage.getItem(LS_SALES) || '[]');
   saveAll();
 
+// Salva anche nel database Firestore
+if (typeof db !== "undefined") {
+  db.collection("prodotti").add({
+    nome: defaultProducts.nome,
+    prezzo: defaultProducts.prezzo,
+    categoria: defaultProducts.categoria,
+    scorte: defaultProducts.scorte,
+    soglia: defaultProducts.soglia,
+    timestamp: new Date()
+  })
+  .then((docRef) => {
+    console.log("Prodotto salvato su Firebase con ID:", docRef.id);
+  })
+  .catch((error) => {
+    console.error("Errore nel salvataggio su Firebase:", error);
+  });
+}
+
+  
   // DOM refs
   const main = document.getElementById('main');
   const modal = document.getElementById('modal');
