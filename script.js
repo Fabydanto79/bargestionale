@@ -20,23 +20,7 @@
   let sales = JSON.parse(localStorage.getItem(LS_SALES) || '[]');
   saveAll();
 
-// Salva anche nel database Firestore
-if (typeof db !== "undefined") {
-  db.collection("prodotti").add({
-    nome: defaultProducts.name,
-    prezzo: defaultProducts.price,
-    categoria: defaultProducts.category,
-    scorte: defaultProducts.stock,
-    soglia: defaultProducts.threshold,
-    timestamp: new Date()
-  })
-  .then((docRef) => {
-    console.log("Prodotto salvato su Firebase con ID:", docRef.id);
-  })
-  .catch((error) => {
-    console.error("Errore nel salvataggio su Firebase:", error);
-  });
-}
+
 
   
   // DOM refs
