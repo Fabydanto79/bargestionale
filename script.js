@@ -245,7 +245,7 @@
     modal.classList.remove('hidden');
   }
   btnCancel.addEventListener('click', ()=> { modal.classList.add('hidden'); });
-  btnSave.addEventListener('click', ()=> {
+  btnSave.addEventListener('click', () => {
   const data = {
     id: editing ? editing.id : id(),
     name: pName.value || 'Nuovo prodotto',
@@ -254,6 +254,67 @@
     stock: Number(pStock.value) || 0,
     threshold: Number(pTh.value) || 5
   };
+
+  // 🔹 Salva in locale
+  if (editing) {
+    products = products.map(p => p.id === editing.id ? data : p);
+  } else {
+    products.push(data);
+  }
+  saveAll();
+
+  // 🔥 Salva anche su Firestore
+  if (typeof db !== "undefined") {
+    if (editing) {
+      // Aggiorna il prodotto esistente su Firestore
+      db.collection("prodotti")
+        .where("nome", "==", editing.name)
+        .get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            doc.ref.update({
+              nome: data.name,
+              prezzo: data.price,
+              categoria: data.category,
+              scorte: data.stock,
+              soglia: data.threshold,
+              timestamp: new Date()
+            });
+          });
+        })
+        .then(() => console.log("Prodotto aggiornato su Firebase:", data.name))
+        .catch(err => console.error("Errore aggiornando prodotto:", err));
+    } else {
+      // Crea un nuovo prodotto
+      db.collection("prodotti")
+        .add({
+          nome: data.name,
+          prezzo: data.price,
+          categoria: data.category,
+          scorte: data.stock,
+          soglia: data.threshold,
+          timestamp: new Date()
+        })
+        .then(docRef => console.log("Nuovo prodotto salvato su Firebase con ID:", docRef.id))
+        .catch(err => console.error("Errore salvando prodotto:", err));
+    }
+  } else {
+    console.warn("Firebase non inizializzato, salvataggio solo locale.");
+  }
+
+  modal.classList.add('hidden');
+  renderProducts();
+});
+
+  //btnSave.addEventListener('click', ()=> {
+//  const data = {
+  //  id: editing ? editing.id : id(),
+    //name: pName.value || 'Nuovo prodotto',
+    //price: Number(pPrice.value) || 0,
+    //category: pCat.value || '',
+    //stock: Number(pStock.value) || 0,
+    //threshold: Number(pTh.value) || 5
+  //};
 
   // Salva in locale
   if (editing) {
@@ -264,21 +325,15 @@
   saveAll();
 
   // 🔥 Salva anche su Firestore
-  btnSave.addEventListener('click', ()=> {
-  const data = { id: editing ? editing.id : id(), name: pName.value || 'Nuovo prodotto', price: Number(pPrice.value)||0, category: pCat.value||'', stock: Number(pStock.value)||0, threshold: Number(pTh.value)||5 };
-  if(editing){ products = products.map(p=> p.id===editing.id ? data : p); } else { products.push(data); }
-  saveAll(); modal.classList.add('hidden'); renderProducts();
-});
-
-    //if (typeof db !== "undefined") {
-    //db.collection("prodotti").add({
-      //nome: data.name,
-      //prezzo: data.price,
-      //categoria: data.category,
-      //scorte: data.stock,
-      //soglia: data.threshold,
-      //timestamp: new Date()
-    //})
+     if (typeof db !== "undefined") {
+    db.collection("prodotti").add({
+    nome: data.name,
+    prezzo: data.price,
+    categoria: data.category,
+    scorte: data.stock,
+    soglia: data.threshold,
+    timestamp: new Date()
+    })
     .then((docRef) => {
       console.log("Prodotto salvato su Firebase con ID:", docRef.id);
     })
