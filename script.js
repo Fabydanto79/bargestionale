@@ -264,15 +264,21 @@
   saveAll();
 
   // 🔥 Salva anche su Firestore
-  if (typeof db !== "undefined") {
-    db.collection("prodotti").add({
-      nome: data.name,
-      prezzo: data.price,
-      categoria: data.category,
-      scorte: data.stock,
-      soglia: data.threshold,
-      timestamp: new Date()
-    })
+  btnSave.addEventListener('click', ()=> {
+  const data = { id: editing ? editing.id : id(), name: pName.value || 'Nuovo prodotto', price: Number(pPrice.value)||0, category: pCat.value||'', stock: Number(pStock.value)||0, threshold: Number(pTh.value)||5 };
+  if(editing){ products = products.map(p=> p.id===editing.id ? data : p); } else { products.push(data); }
+  saveAll(); modal.classList.add('hidden'); renderProducts();
+});
+
+    //if (typeof db !== "undefined") {
+    //db.collection("prodotti").add({
+      //nome: data.name,
+      //prezzo: data.price,
+      //categoria: data.category,
+      //scorte: data.stock,
+      //soglia: data.threshold,
+      //timestamp: new Date()
+    //})
     .then((docRef) => {
       console.log("Prodotto salvato su Firebase con ID:", docRef.id);
     })
