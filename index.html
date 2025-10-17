@@ -41,11 +41,27 @@
   <div id="modal" class="modal hidden">
     <div class="modal-card">
       <h3 id="modal-title">Nuovo prodotto</h3>
-      <div class="form-row"><label>Nome</label><input id="p-name" /></div>
-      <div class="form-row"><label>Prezzo (€)</label><input id="p-price" type="number" step="0.01" /></div>
-      <div class="form-row"><label>Categoria</label><input id="p-cat" /></div>
-      <div class="form-row"><label>Scorte</label><input id="p-stock" type="number" /></div>
-      <div class="form-row"><label>Soglia avviso</label><input id="p-th" type="number" /></div>
+      <div class="form-row">
+  <label for="p-name">Nome</label>
+  <input id="p-name" name="p-name" />
+</div>
+<div class="form-row">
+  <label for="p-price">Prezzo (€)</label>
+  <input id="p-price" name="p-price" type="number" step="0.01" />
+</div>
+<div class="form-row">
+  <label for="p-cat">Categoria</label>
+  <input id="p-cat" name="p-cat" />
+</div>
+<div class="form-row">
+  <label for="p-stock">Scorte</label>
+  <input id="p-stock" name="p-stock" type="number" />
+</div>
+<div class="form-row">
+  <label for="p-th">Soglia avviso</label>
+  <input id="p-th" name="p-th" type="number" />
+</div>
+
       <div class="modal-actions">
         <button id="modal-cancel" class="btn-outline">Annulla</button>
         <button id="modal-save" class="btn-primary">Salva</button>
