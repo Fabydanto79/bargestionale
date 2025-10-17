@@ -245,6 +245,7 @@
     modal.classList.remove('hidden');
   }
   btnCancel.addEventListener('click', ()=> { modal.classList.add('hidden'); });
+  
   btnSave.addEventListener('click', () => {
   const data = {
     id: editing ? editing.id : id(),
@@ -314,7 +315,7 @@
     //category: pCat.value || '',
     //stock: Number(pStock.value) || 0,
     //threshold: Number(pTh.value) || 5
-  //};
+  };
 
   // Salva in locale
   if (editing) {
