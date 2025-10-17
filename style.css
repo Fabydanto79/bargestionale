@@ -63,3 +63,14 @@ body{margin:0;background:linear-gradient(180deg,#07102a 0%, #071026 60%), #02061
 .product-btn .stock {
   color: white !important;
 }
+
+.product-btn {
+  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+  border: 1px solid rgba(255,255,255,0.08);
+  color: white !important;
+}
+
+.product-btn:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  transform: scale(1.03);
+}
