@@ -315,7 +315,7 @@
     //category: pCat.value || '',
     //stock: Number(pStock.value) || 0,
     //threshold: Number(pTh.value) || 5
-  };
+  }
 
   // Salva in locale
   if (editing) {
