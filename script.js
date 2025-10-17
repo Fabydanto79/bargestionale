@@ -316,7 +316,7 @@
     //stock: Number(pStock.value) || 0,
     //threshold: Number(pTh.value) || 5
   //};
-}
+
   // Salva in locale
   if (editing) {
     products = products.map(p => p.id === editing.id ? data : p);
