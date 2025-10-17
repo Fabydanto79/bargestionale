@@ -105,14 +105,54 @@
       const row = el('div','item-row'); row.innerHTML = `<div>${c.name} <div class="small">€${fmt(c.price)} x ${c.qty}</div></div><div>€${fmt(c.price*c.qty)}</div>`;
       list.appendChild(row);
     }); const tot = cart.reduce((s,i)=>s+i.price*i.qty,0); totalDisplay.textContent='Totale: €'+fmt(tot); }
-    function checkout(method){
-      if(cart.length===0) return;
-      const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
-      sales.unshift({ id:id(), date:new Date().toISOString(), items: [...cart], total, method });
-      // Deduct stock
-      products = products.map(p=>{ const c = cart.find(ci=>ci.id===p.id); if(!c) return p; return {...p, stock: Math.max(0, p.stock - c.qty)} });
-      cart = []; saveAll(); refreshGrid(); refreshCart(); alert('Vendita registrata: €'+fmt(total)+' ('+method+')');
-    }
+    function checkout(method) {
+  if (cart.length === 0) return;
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  sales.unshift({
+    id: id(),
+    date: new Date().toISOString(),
+    items: [...cart],
+    total,
+    method
+  });
+
+  // 🔹 Aggiorna scorte in locale
+  products = products.map(p => {
+    const c = cart.find(ci => ci.id === p.id);
+    if (!c) return p;
+    const newStock = Math.max(0, p.stock - c.qty);
+    return { ...p, stock: newStock };
+  });
+
+  // 🔥 Aggiorna anche su Firestore
+  if (typeof db !== "undefined") {
+    cart.forEach(item => {
+      db.collection("prodotti")
+        .where("nome", "==", item.name)
+        .get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            const newStock = Math.max(0, (doc.data().scorte || 0) - item.qty);
+            doc.ref.update({ scorte: newStock })
+              .then(() => console.log(`Scorte aggiornate per ${item.name}: ${newStock}`))
+              .catch(err => console.error("Errore aggiornando scorte:", err));
+          });
+        })
+        .catch(err => console.error("Errore nella query Firestore:", err));
+    });
+  } else {
+    console.warn("Firebase non inizializzato, scorte aggiornate solo in locale.");
+  }
+
+  // 🔚 Pulizia e refresh interfaccia
+  cart = [];
+  saveAll();
+  refreshGrid();
+  refreshCart();
+  alert('Vendita registrata: €' + fmt(total) + ' (' + method + ')');
+}
+    
   }
 
   // Products view
