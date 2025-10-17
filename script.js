@@ -206,10 +206,47 @@
   }
   btnCancel.addEventListener('click', ()=> { modal.classList.add('hidden'); });
   btnSave.addEventListener('click', ()=> {
-    const data = { id: editing ? editing.id : id(), name: pName.value || 'Nuovo prodotto', price: Number(pPrice.value)||0, category: pCat.value||'', stock: Number(pStock.value)||0, threshold: Number(pTh.value)||5 };
-    if(editing){ products = products.map(p=> p.id===editing.id ? data : p); } else { products.push(data); }
-    saveAll(); modal.classList.add('hidden'); renderProducts();
-  });
+  const data = {
+    id: editing ? editing.id : id(),
+    name: pName.value || 'Nuovo prodotto',
+    price: Number(pPrice.value) || 0,
+    category: pCat.value || '',
+    stock: Number(pStock.value) || 0,
+    threshold: Number(pTh.value) || 5
+  };
+
+  // Salva in locale
+  if (editing) {
+    products = products.map(p => p.id === editing.id ? data : p);
+  } else {
+    products.push(data);
+  }
+  saveAll();
+
+  // 🔥 Salva anche su Firestore
+  if (typeof db !== "undefined") {
+    db.collection("prodotti").add({
+      nome: data.name,
+      prezzo: data.price,
+      categoria: data.category,
+      scorte: data.stock,
+      soglia: data.threshold,
+      timestamp: new Date()
+    })
+    .then((docRef) => {
+      console.log("Prodotto salvato su Firebase con ID:", docRef.id);
+    })
+    .catch((error) => {
+      console.error("Errore nel salvataggio su Firebase:", error);
+    });
+  } else {
+    console.warn("Firebase non inizializzato, salvataggio solo locale.");
+  }
+
+  modal.classList.add('hidden');
+  renderProducts();
+});
+
 
   // Small helpers
   function el(tag, cls){ const e = document.createElement(tag); if(cls) e.className = cls; return e; }
