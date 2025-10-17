@@ -170,7 +170,38 @@
       const left = el('div'); left.innerHTML = `<div style="font-weight:700">${p.name}</div><div class="small">${p.category} · €${fmt(p.price)}</div><div class="small">Scorte: ${p.stock}</div>`;
       const actions = el('div');
       const mod = el('button'); mod.className='btn-outline'; mod.style.marginRight='6px'; mod.textContent='Modifica'; mod.addEventListener('click', ()=> openModal(p));
-      const del = el('button'); del.className='btn-outline'; del.textContent='Elimina'; del.addEventListener('click', ()=> { if(confirm('Rimuovere prodotto?')){ products = products.filter(x=>x.id!==p.id); expirations = expirations.filter(e=>e.productId!==p.id); saveAll(); renderProducts(); } });
+     
+      const del = el('button');
+del.className = 'btn-outline';
+del.textContent = 'Elimina';
+del.addEventListener('click', () => {
+  if (confirm(`Vuoi davvero eliminare ${p.name}?`)) {
+    // 🔹 Elimina in locale
+    products = products.filter(x => x.id !== p.id);
+    expirations = expirations.filter(e => e.productId !== p.id);
+    saveAll();
+    renderProducts();
+
+    // 🔥 Elimina anche da Firebase, se disponibile
+    if (typeof db !== "undefined") {
+      db.collection("prodotti")
+        .where("nome", "==", p.name)
+        .get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            doc.ref.delete()
+              .then(() => console.log(`Prodotto eliminato da Firebase: ${p.name}`))
+              .catch(err => console.error("Errore eliminando da Firebase:", err));
+          });
+        })
+        .catch(err => console.error("Errore nella query Firebase:", err));
+    } else {
+      console.warn("Firebase non inizializzato, eliminazione solo locale.");
+    }
+  }
+});
+
+      //const del = el('button'); del.className='btn-outline'; del.textContent='Elimina'; del.addEventListener('click', ()=> { if(confirm('Rimuovere prodotto?')){ products = products.filter(x=>x.id!==p.id); expirations = expirations.filter(e=>e.productId!==p.id); saveAll(); renderProducts(); } });
       actions.appendChild(mod); actions.appendChild(del);
       card.appendChild(left); card.appendChild(actions); grid.appendChild(card);
     });
